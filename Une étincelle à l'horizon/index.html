@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Une étincelle à l'horizon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(#0d0d0d, #000);
+            color: #fff;
+            overflow-x: hidden;
+        }
+        header {
+            position: relative;
+            height: 100vh;
+            background-image: url('image1.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            text-align: center;
+        }
+        header::before {
+            content:''; position:absolute; top:0; left:0;
+            width:100%; height:100%;
+            background:linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
+        }
+        header h1 { font-size:3rem; z-index:2; margin:0; }
+        header p { font-size:1.5rem; z-index:2; }
+        .button {
+            background:#fff; color:#000; padding:10px 25px;
+            text-decoration:none; transition:0.3s; margin-top:20px;
+            z-index:2; position:relative;
+        }
+        .button:hover { background:#ddd; }
+        section {
+            padding:80px 20%; opacity:0; transform:translateY(40px);
+            transition:opacity 1s ease-out, transform 1s ease-out;
+            text-align:justify;
+            background-size: cover;
+            background-position: center;
+        }
+        section.visible { opacity:1; transform:translateY(0); }
+
+        #resume { background-image: url('image2.jpg'); }
+        #resume2 { background-image: url('image3.jpg'); }
+
+        footer {
+            background:#000; text-align:center; padding:20px;
+        }
+
+        .author-header {
+            position:absolute; bottom:10px; font-size:1.1rem;
+            z-index:2; opacity:0.8;
+        }
+
+        .citation {
+            font-style:italic; opacity:0.8;
+            max-width:600px; margin:50px auto; text-align:center;
+        }
+
+        .avis {
+            margin-top: 40px;
+            text-align: center;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        @media(max-width:800px){
+            section { padding:40px 10%; }
+            header h1 { font-size:2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Une étincelle à l'horizon</h1>
+    <p>L'histoire d'Éverill et Paula</p>
+    <div class="author-header">Edward Shi</div>
+    <a href="#resume" class="button">Découvrir</a>
+</header>
+
+<section id="resume">
+    <h2>Résumé</h2>
+    <p>
+        C’est un ex-soldat.<br><br>
+        C’est une enfant des rues.<br><br>
+        L’ex-soldat fuit la tyrannie.<br><br>
+        L’enfant survit coute que coute.<br><br>
+        Tous deux, victimes d’une société corrompue, seront confrontés à leurs origines.<br><br>
+        Tous deux, déterminés à affronter le mal, seront réunis par le destin.<br><br>
+        Ensemble, ils s’enfonceront dans les profondeurs nébuleuses d’Atlantis.<br><br>
+        Ensemble, ils perceront les secrets du mal qui ronge la cité perdue.<br><br>
+        C’est l’histoire de Éverill et de Paula.
+    </p>
+    <div class="citation">« Je craignais la solitude, je craignais la réalité. Je m’étais fait un ami et je me croyais acceptée par la société. Mais il n’en a jamais été. »</div>
+</section>
+
+<section id="resume2">
+    <h2>Atlantis</h2>
+    <p>
+        Au premier regard, Atlantis semble utopique : une magnifique île au milieu de l’océan, dominée par une majestueuse montagne autour de laquelle pousse une végétation luxuriante. C’est un décor paradisiaque où prospère une vie épanouie.<br><br>
+        Et si on examinait cette île de plus près ? Et si on se décidait finalement d’arrêter de rêver ? On constaterait alors qu’elle n’est ni paradisiaque ni utopique ; elle paraît rongée par un mal indicible. À l’intérieur de la montagne brûle un feu ravageur.<br><br>
+        Atlantis abrite une civilisation oubliée, énigmatique et obscure. Au cours du périple sanglant d’un homme et de la quête intemporelle d’une femme, on s’enfoncera dans ses profondeurs nébuleuses, tandis que ses secrets se dévoileront, petit à petit…
+    </p>
+    <div class="citation">« Les mers de ses rêves de liberté se vidèrent, petit à petit. »</div>
+</section>
+
+<section id="auteur">
+    <h2>L'auteur</h2>
+    <p>
+        Edward Shi. Né en 2008. 17 ans. Un écrivain engagé qui n'a pas peur de s'exprimer.
+    </p>
+    <div class="avis">
+        « Incroyable », Richard Ma-Yang, élève de secondaire V<br>
+        « Un excellent roman. Impressionnant », Yasser Naaoumi, élève de secondaire V
+    </div>
+</section>
+
+<section id="acheter">
+    <h2>Obtenir le livre</h2>
+    <p>Disponible dès maintenant sur Amazon :</p>
+    <a href="https://www.amazon.com" class="button" target="_blank">Acheter maintenant</a>
+</section>
+
+<footer>
+    <p>Copyright © 2025 | Tous droits réservés</p>
+</footer>
+
+<script>
+    const sections = document.querySelectorAll('section');
+    const observerOptions = { threshold: 0.2 };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, observerOptions);
+    sections.forEach(section => observer.observe(section));
+</script>
+
+</body>
+</html>
